@@ -438,7 +438,9 @@
 
     [self setupHTTPServer];
     [self.mixpanel identify:@"ABC"];
-    [self.mixpanel joinExperiments];
+    [self.mixpanel joinExperimentsWithCompletion:^(NSSet *variants) {
+		
+	}];
     [self waitForSerialQueue];
 
     XCTAssertEqual([self.mixpanel.variants count], 2u, @"Should have 2 variants");
@@ -448,7 +450,9 @@
 
     // Returning a new variant for the same experiment from decide should override the old one
     [MixpanelDummyDecideConnection setDecideResponseURL:[[NSBundle mainBundle] URLForResource:@"test_decide_response_2" withExtension:@"json"]];
-    [self.mixpanel joinExperiments];
+    [self.mixpanel joinExperimentsWithCompletion:^(NSSet *variants) {
+		
+	}];
     [self waitForSerialQueue];
 
     XCTAssertEqual([self.mixpanel.variants count], 3u, @"Should have 3 variants");

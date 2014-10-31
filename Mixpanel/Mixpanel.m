@@ -1622,9 +1622,14 @@ static Mixpanel *sharedInstance = nil;
     });
 }
 
-- (void)joinExperiments
+- (void)joinExperimentsWithCompletion:(void (^)(NSSet *variants))completion
 {
     [self checkForVariantsWithCompletion:^(NSSet *newVariants) {
+		if (completion)
+		{
+			completion(self.variants);
+		}
+		// old usage
         for (MPVariant *variant in newVariants) {
             [variant execute];
             [self markVariantRun:variant];

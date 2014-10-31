@@ -203,7 +203,9 @@
 
 - (IBAction)joinExperiments:(id)sender
 {
-    [[Mixpanel sharedInstance] joinExperiments];
+    [[Mixpanel sharedInstance] joinExperimentsWithCompletion:^(NSSet *variants) {
+		
+	}];
 }
 
 @end

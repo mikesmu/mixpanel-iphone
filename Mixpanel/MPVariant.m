@@ -11,13 +11,8 @@
 #import "MPSwizzler.h"
 #import "MPValueTransformers.h"
 #import "MPTweakStore.h"
-#import "MPTweak.h"
 
 @interface MPVariant ()
-
-    @property (nonatomic, strong) NSMutableOrderedSet *actions;
-    @property (nonatomic, strong) NSMutableArray *tweaks;
-
 @end
 
 @interface MPVariantAction ()
@@ -55,10 +50,6 @@
 #pragma mark -
 
 @interface MPVariantTweak ()
-
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *encoding;
-@property (nonatomic, strong) MPTweakValue value;
 
 + (MPVariantTweak *)tweakWithJSONObject:(NSDictionary *)object;
 - (id)initWithName:(NSString *)name

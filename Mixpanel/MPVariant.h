@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MPTweak.h"
+
 @interface MPVariant : NSObject <NSCoding>
 
 @property (nonatomic) NSUInteger ID;
 @property (nonatomic) NSUInteger experimentID;
+
+@property (nonatomic, strong) NSMutableOrderedSet *actions;
+@property (nonatomic, strong) NSMutableArray *tweaks;
 
 /*!
  @property
@@ -101,5 +106,9 @@
 @end
 
 @interface MPVariantTweak : NSObject <NSCoding>
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *encoding;
+@property (nonatomic, strong) MPTweakValue value;
 
 @end

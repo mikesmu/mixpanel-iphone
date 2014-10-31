@@ -632,7 +632,7 @@
 
  You do not need to call this method on the main thread.
  */
-- (void)joinExperiments;
+- (void)joinExperimentsWithCompletion:(void (^)(NSSet *variants))completion;
 
 - (void)createAlias:(NSString *)alias forDistinctID:(NSString *)distinctID;
 
